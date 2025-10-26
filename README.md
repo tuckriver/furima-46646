@@ -30,7 +30,7 @@
 | category_id        | integer    | null: false |
 | product_status_id  | integer    | null: false |
 | delivery_cost_id   | integer    | null: false |
-| delivery_place_id  | integer    | null: false |
+| prefecture_id      | integer    | null: false |
 | delivery_time_id   | integer    | null: false |
 | product_price      | integer    | null: false |
 | user               | references | null: false, foreign_key: true|
