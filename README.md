@@ -8,12 +8,12 @@
 | ------------------ | ------- | ----------- |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
-| nickname           | string  | null: false, unique: true |
+| nickname           | string  | null: false |
 | lastname_kanji     | string  | null: false |
 | firstname_kanji    | string  | null: false |
 | lastname_katakana  | string  | null: false |
 | firstname_katakana | string  | null: false |
-| birth_date         | integer | null: false |
+| birth_date         | date    | null: false |
 
 
 ### Association
@@ -26,8 +26,13 @@
 | Column             | Type       | Options     |
 | ------------------ | ---------- | ----------- |
 | product_name       | string     | null: false |
-| product_price      | integer    | null: false |
 | description        | text       | null: false |
+| category           | string     | null: false |
+| product_status     | string     | null: false |
+| delivery_cost      | string     | null: false |
+| delivery_place     | string     | null: false |
+| delivery_time      | string     | null: false |
+| product_price      | integer    | null: false |
 | user               | references | null: false, foreign_key: true|
 
 ### Association
@@ -40,7 +45,6 @@
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| address   | references | null: false, foreign_key: true |
 | product   | references | null: false, foreign_key: true |
 | user      | references | null: false, foreign_key: true |
 
@@ -55,10 +59,13 @@
 
 | Column       | Type       | Options     |
 | ------------ | ---------- | ----------- |
-| postal_code  | integer    | null: false |
+| purchase     | references | null: false, foreign_key: true |
+| postal_code  | string     | null: false |
 | prefecture   | string     | null: false |
 | city         | string     | null: false |
 | address      | string     | null: false |
+| building     | string     |             |
+| phone_number | string     | null: false |
 
 
 ### Association
