@@ -18,4 +18,6 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
 
   # Associationはproductモデル,purchaseモデルを作成時に都度作成予定
+  has_many :products
+  
 end
