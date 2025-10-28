@@ -20,15 +20,15 @@ RSpec.describe Product, type: :model do
       end
 
       it 'descriptionが空では出品できない' do
-        @product.product_name = ''
+        @product.description = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Product name can't be blank")
+        expect(@product.errors.full_messages).to include("Description can't be blank")
       end
 
       it 'product_imageが空では出品できない' do
-        @product.product_name = ''
+        @product.product_image = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Product name can't be blank")
+        expect(@product.errors.full_messages).to include("Product image can't be blank")
       end
 
       it 'product_status_idがid=1(---)では出品できない' do
@@ -67,12 +67,6 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Product price can't be blank")
       end
 
-      it 'product_imageが空では出品できない' do
-        @product.product_image = nil
-        @product.valid?
-        expect(@product.errors.full_messages).to include("Product image can't be blank")
-      end
-
       it 'product_priceが300円未満では出品できない' do
         @product.product_price = '299'
         @product.valid?
@@ -95,6 +89,12 @@ RSpec.describe Product, type: :model do
         @product.product_price = 'abcdef'
         @product.valid?
         expect(@product.errors.full_messages).to include('Product price is not a number')
+      end
+      
+      it 'userが紐付いていないと保存できない' do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include('User must exist')
       end
     end
   end

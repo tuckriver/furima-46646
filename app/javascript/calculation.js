@@ -22,3 +22,4 @@ function calculation() {
 }
 
 window.addEventListener("turbo:load", calculation);
+window.addEventListener("turbo:render", calculation);
