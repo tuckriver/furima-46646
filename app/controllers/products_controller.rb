@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-
-  before_action :authenticate_user!, only: [:new, :create,]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
   end
@@ -8,7 +7,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
-
 
   def create
     @product = Product.new(product_params)
@@ -18,11 +16,13 @@ class ProductsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-    
 
   private
-  def product_params
-    params.require(:product).permit(:product_name, :description, :product_status_id, :category_id, :prefecture_id, :delivery_time_id, :delivery_cost_id, :product_price,:product_image).merge(user_id: current_user.id)
 
+  def product_params
+    params.require(:product)
+          .permit(:product_name, :description, :product_status_id, :category_id, :prefecture_id,
+                  :delivery_time_id, :delivery_cost_id, :product_price, :product_image)
+          .merge(user_id: current_user.id)
   end
 end
