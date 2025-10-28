@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
 
   def edit
     return if user_signed_in? && @product.user_id == current_user.id
+
     redirect_to action: :index
   end
 
@@ -39,7 +40,7 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to root_path
   end
-  
+
   private
 
   def product_params
