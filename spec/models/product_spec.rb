@@ -90,7 +90,7 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include('Product price is not a number')
       end
-      
+
       it 'userが紐付いていないと保存できない' do
         @product.user = nil
         @product.valid?
