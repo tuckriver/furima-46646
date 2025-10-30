@@ -5,10 +5,8 @@ RSpec.describe PurchaseAddress, type: :model do
     user = FactoryBot.create(:user)
     product = FactoryBot.create(:product)
     @purchase_address = FactoryBot.build(:purchase_address, user_id: user.id, product_id: product.id)
-    
   end
   describe '住所の保存' do
-
     context '内容に問題ない場合' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_address).to be_valid
@@ -43,23 +41,23 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'prefectureを選択していないと保存できないこと' do
         @purchase_address.prefecture_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include ("Prefecture can't be blank")
+        expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'cityが空だと保存できないこと' do
-        @purchase_address.city = ""
+        @purchase_address.city = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("City can't be blank")
       end
       it 'addressが空だと保存できないこと' do
-        @purchase_address.address = ""
+        @purchase_address.address = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Address can't be blank")
-      end 
+      end
       it 'phone_numberが空だと保存できないこと' do
         @purchase_address.phone_number = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
-      end      
+      end
       it 'phone_numberが全角数字だと保存できないこと' do
         @purchase_address.phone_number = '０９０１２３４５６７８'
         @purchase_address.valid?
