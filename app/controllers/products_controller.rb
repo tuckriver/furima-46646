@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 
   def edit
     return if user_signed_in? && @product.user_id == current_user.id
-
+    return if @product.purchase.blank?
     redirect_to action: :index
   end
 
