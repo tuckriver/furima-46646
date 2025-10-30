@@ -19,4 +19,5 @@ class User < ApplicationRecord
 
   # Associationはproductモデル,purchaseモデルを作成時に都度作成予定
   has_many :products
+  has_many :purchases
 end
