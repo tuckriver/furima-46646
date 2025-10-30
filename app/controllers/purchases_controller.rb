@@ -42,7 +42,7 @@ class PurchasesController < ApplicationController
   end
 
   def redirect_to_root
-    return unless @product.purchase.present? || @product.user_id == current_user.id || !user_signed_in?
+    return unless @product.purchase.present? || @product.user_id == current_user.id 
 
     redirect_to root_path
   end
