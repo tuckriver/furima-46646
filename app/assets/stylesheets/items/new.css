@@ -46,6 +46,17 @@
   margin-bottom: 10px;
 }
 
+.preview {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .select-box {
   height: 30px;
   width: 100%;
